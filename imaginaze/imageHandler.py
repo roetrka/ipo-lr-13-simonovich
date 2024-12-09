@@ -1,9 +1,4 @@
-import tkinter as tk
-from tkinter import ttk
-from tkinter.messagebox import showerror
-from tkinter import filedialog as fd
-from tkinter import simpledialog
-from PIL import Image, ImageTk
+from PIL import Image
 
 
 
