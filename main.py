@@ -1,4 +1,3 @@
-from imaginaze.imageHandler import ImageHandler
 from imaginaze.imageFunction import Imagine
 
 from PIL import Image
