@@ -5,7 +5,6 @@ from tkinter import filedialog as fd
 from tkinter import simpledialog
 from PIL import Image, ImageTk
 from .imageHandler import ImageHandler
-from .imageProcessor import ImageProcessor  
 
 
 class Imagine(tk.Frame,ImageHandler):
@@ -22,8 +21,8 @@ class Imagine(tk.Frame,ImageHandler):
         ttk.Button(self, text='Сохранить', command=self.save_to_file_gui).pack(fill=tk.X)
         ttk.Button(self, text='JPG', command=self.remake_format_gui).pack(fill=tk.X)
         ttk.Button(self, text='Поворот на 45', command=self.turn_gui).pack(fill=tk.X)
-        ttk.Button(self, text='Резкость', command=self.sharpen_load).pack(fill=tk.X)
-        ttk.Button(self, text='Рамка 15ph', command=self.border_load).pack(fill=tk.X)
+        ttk.Button(self, text='Резкость', command=self.sharpen_load_gui).pack(fill=tk.X)
+        ttk.Button(self, text='Рамка 15ph', command=self.border_load_gui).pack(fill=tk.X)
 
 
     
@@ -80,20 +79,18 @@ class Imagine(tk.Frame,ImageHandler):
             showerror("Ошибка", "Не удалось изменить ориентацию изображения") # вывод при ошибке
 
 
-        # метод повышения резкости изображения
-    def sharpen_load(self):
-            filter = ImageProcessor(self.img)  #  экземпляр дочернего класса
+    # метод повышения резкости изображения
+    def sharpen_load_gui(self):
             try:
-                self.img = filter.sharpen()  # повышение резкости
+                self.sharpen_load(self.img)
                 self.update_label(self.img)  # меняем лейбл
             except:
                 showerror("Ошибка", "Не удалось  применить фильтр резкости") # вывод при ошибке
 
 
-    def border_load(self):
+    def border_load_gui(self):
         try:
-            filter = ImageProcessor(self.img)  #  экземпляр дочернего класса
-            self.img = filter.border()  # создание рамки 15ph
+            self.border_load(self.img)
             self.update_label(self.img) # меняем лейбл
         except:
             showerror("Ошибка", "Не удалось создать рамку изображению") # вывод при ошибке
