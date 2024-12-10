@@ -87,7 +87,6 @@ class Imagine(tk.Frame,ImageHandler):
             except:
                 showerror("Ошибка", "Не удалось  применить фильтр резкости") # вывод при ошибке
 
-
     def border_load_gui(self):
         try:
             self.border_load(self.img)
