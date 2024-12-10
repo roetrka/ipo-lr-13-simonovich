@@ -1,4 +1,5 @@
 from PIL import Image
+from .imageProcessor import ImageProcessor  
 
 
 
@@ -31,13 +32,17 @@ class ImageHandler():
         self.img.save(jpg_path)
 
 
-
-        
     #метод поворота на 45 градусов
     def turn(self,img):
         self.img  = self.img.rotate(45) # повторот и присвоение обьекту
 
+    def sharpen_load(self,img):
+        filter = ImageProcessor(self.img)  #  экземпляр дочернего класса
+        self.img = filter.sharpen()  # повышение резкости
 
+    def border_load(self, img):
+        filter = ImageProcessor(self.img)  #  экземпляр дочернего класса
+        self.img = filter.border()  # создание рамки 15ph
 
 
                       
